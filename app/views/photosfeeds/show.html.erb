@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Album title:</b>
+  <%= @photosfeed.album_title %>
+</p>
+
+<p>
+  <b>Set number:</b>
+  <%= @photosfeed.set_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_photosfeed_path(@photosfeed) %> |
+<%= link_to 'Back', photosfeeds_path %>

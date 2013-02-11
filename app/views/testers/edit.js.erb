@@ -1,0 +1,7 @@
+$('#inner_<%= dom_id(@tester) %>').html(
+	'<%= escape_javascript(render "form") %></div>' +
+	'<a class="kill" href="#">&times;</a>');
+
+$('.kill', $('#inner_<%= dom_id(@tester) %>')).click(function() {
+	$('#inner_<%= dom_id(@tester) %>').html("");
+});

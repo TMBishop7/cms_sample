@@ -1,0 +1,68 @@
+<%= form_for [:admin, @user] do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div class="row-fluid">
+      <div class="span6 offset3">
+        <%= f.text_field :name, :placeholder => "Username", :class => "fullw" %>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="field">
+    <div class="row-fluid">
+      <div class="span6 offset3">
+        <%= f.text_field :email, :placeholder => "Email", :class => "fullw" %>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="field">
+    <div class="row-fluid">
+      <div class="span6 offset3">
+        <%= f.text_field :picture_url, :placeholder => "Profile Image URL", :class => "fullw" %>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="field">
+    <div class="row-fluid">
+      <div class="span6 offset3">
+        <%= f.text_field :app_status, :placeholder => "App Status", :class => "fullw" %>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="field">
+    <div class="row-fluid">
+      <div class="span6 offset3">
+        <%= f.password_field :password, :placeholder => "Password", :class => "fullw" %>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="field">
+    <div class="row-fluid">
+      <div class="span6 offset3">
+        <%= f.password_field :password_confirmation, :placeholder => "Confirm Password", :class => "fullw" %>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="actions">
+    <div class="row-fluid">
+      <div class="span6 offset3">
+        <%= f.submit @user.new_record? ? "Add" : "Save", @user.new_record? ? { :class => 'btn btn-primary' } : { :class => 'btn btn-success' }  %>
+      </div>
+    </div>
+  </div>
+<% end %>

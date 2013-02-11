@@ -1,0 +1,43 @@
+<%= form_for(@info_appstore, :url => user_info_appstore_path(@user), :html => {:style => 'margin-left:5%;'}) do |f| %>
+  <% if @info_appstore.errors.any? %>
+    <div class ="alert alert-error">
+      <b><%= pluralize(@info_appstore.errors.count, "error") %> caught: </b>
+      <% @info_appstore.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :institution_name, "Name of Institution" %>
+    <%= f.text_field :institution_name, :placeholder => "Name" %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :app_short_name, "App Short Name (12 characters max)" %>
+    <%= f.text_field :app_short_name, :placeholder => "e.g. ICU Mobile" %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :app_long_name, "App Long Name" %>
+    <%= f.text_field :app_long_name, :placeholder => "e.g. iCampus University Mobile" %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :app_description, "App Description" %>
+    <%= f.text_area(:app_description, :size => "40x25") %>
+  </div>
+  <br />
+  <div class="actions">
+    <% if @info_appstore.new_record? %>
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+    <% else %>
+      <%= button_tag(:type => 'submit', class: "btn btn-success btn-large") do %>
+       <i class="icon-ok-sign icon-white"></i> Update
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

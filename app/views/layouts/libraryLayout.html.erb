@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iCampus Live</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyBqn3S_A6VHC-Jzpt_-ER3Yb0QVjz_6SpI&sensor=false" %>
+  <% if controller.action_name == 'new' %>
+    <%= render 'library_locations/newMapjs' %>
+  <% end %>
+  <% if controller.action_name == 'edit' %>
+    <%= render 'library_locations/editMapjs' %>
+  <% end %>
+  <%= csrf_meta_tags %>
+  <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+  </style>
+</head>
+
+<%= yield %>
+
+</html>

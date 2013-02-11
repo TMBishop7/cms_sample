@@ -1,0 +1,5 @@
+$.ajax({
+	success: function() {
+		$('#iosFeatureList').html('<%= escape_javascript(render :partial => @ios_feature_icons) %>');
+	}
+});

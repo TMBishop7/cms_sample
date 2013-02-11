@@ -1,0 +1,5 @@
+$.ajax({
+	success: function() {
+		$('#iosMainList').html('<%= escape_javascript(render :partial => @ios_main_icons) %>');
+	}
+});

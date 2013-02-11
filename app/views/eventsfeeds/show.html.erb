@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @eventsfeed.title %>
+</p>
+
+<p>
+  <b>Ical url:</b>
+  <%= @eventsfeed.ical_url %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @eventsfeed.color %>
+</p>
+
+
+<%= link_to 'Edit', edit_eventsfeed_path(@eventsfeed) %> |
+<%= link_to 'Back', eventsfeeds_path %>

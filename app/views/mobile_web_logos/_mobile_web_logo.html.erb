@@ -1,0 +1,19 @@
+<%= content_tag_for :li, mobile_web_logo do %>
+	<div class="row-fluid">
+		<div class="span6 features-prev"><%= image_tag mobile_web_logo.logo_image.url %></div>
+		<div class="span3 graph-header">
+		  	<h4><%= mobile_web_logo.logo_size %></h4>
+	  	</div>
+	  	<div class="span3 list-controls">
+	  		<div class="current-actions-wrap">
+	  			<div class="current-actions">
+			  	<div class="btn-group">
+			  	<%= link_to raw('<i class="icon-edit"></i> Edit'), edit_user_mobile_web_logo_path(@user, mobile_web_logo), :remote => true, :class => 'btn btn-small' %>
+			  	<%= link_to raw('<i class="icon-trash"></i> Delete'), [@user, mobile_web_logo], :confirm => 'Are you sure?', :method => :delete, :remote => true, :class => 'btn btn-small' %>
+			  	</div>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<div id="inner_<%= dom_id(mobile_web_logo) %>" class="row-fluid listItemInner"></div>
+<% end %>

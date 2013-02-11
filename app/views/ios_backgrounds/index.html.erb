@@ -1,0 +1,28 @@
+<div class="box-model-header"><h1>iOS Backgrounds</h1></div>   
+<div class="box-model-content">
+  <div class="row-fluid">
+    <div class="span12 guide">
+      <div class="count">
+        <h3>Sizes</h3>
+        <div id="count" class="feed-count"><%= @ios_backgrounds.count %></div>
+      </div>
+      <%= render "shared/mini_guide" %>
+    </div>
+  </div>
+  <div class="row-fluid">
+      <div class="span12">
+        <div class="addnew">
+          <div id="iosBackground_form">
+            <%= render 'form' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <ul id="iosBackgroundList" class="thumbnails">
+        <%= render @ios_backgrounds %>
+      </ul>
+    </div>
+  </div>
+</div>

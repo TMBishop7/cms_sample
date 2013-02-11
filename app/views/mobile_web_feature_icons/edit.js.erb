@@ -1,0 +1,7 @@
+$('#inner_<%= dom_id(@mobile_web_feature_icon) %>').html(
+	'<%= escape_javascript(render "form") %>' +
+	'<a class="kill" href="#">&times;</a>');
+
+$('.kill', $('#inner_<%= dom_id(@mobile_web_feature_icon) %>')).click(function() {
+	$('#inner_<%= dom_id(@mobile_web_feature_icon) %>').html("");
+});

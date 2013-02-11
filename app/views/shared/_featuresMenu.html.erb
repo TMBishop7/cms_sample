@@ -1,0 +1,24 @@
+<ul class="nav nav-list">
+  <li class="nav-header">Features</li>
+  <li class="<%= (@act_control == "newsfeeds") ? 'active': '' %>"><%= link_to raw('<i class="icon-comment icon-grey"></i> News'), [@user, :newsfeeds] %></li>
+  <li class="<%= (@act_control == "photosfeeds") ? 'active': '' %>"><%= link_to raw('<i class="icon-camera icon-grey"></i> Photos'), [@user, :photosfeeds] %></li>
+  <li class="<%= (@act_control == "videosfeeds") ? 'active': '' %>"><%= link_to raw('<i class="icon-facetime-video icon-grey"></i> Videos'), [@user, :videosfeeds] %></li>
+  <li class="<%= (@act_control == "eventsfeeds") ? 'active': '' %>"><%= link_to raw('<i class="icon-calendar icon-grey"></i> Events'), [@user, :eventsfeeds] %></li>
+  <li class="<%= (@act_control == "directories") ? 'active': '' %>"><%= link_to raw('<i class="icon-search icon-grey"></i> Directory'), user_directory_path(@user) %></li>
+  <li class="<%= (@act_control == "athletics") ? 'active': '' %>"><%= link_to raw('<i class="icon-bullhorn icon-grey"></i> Athletics'), user_athletic_path(@user) %></li>
+  <li class="<%= (@act_control == "library_worldcats") ? 'active': '' %>"><%= link_to raw('<i class="icon-globe icon-grey"></i> Library Settings'), user_library_worldcat_path(@user) %></li>
+  <% if multi_center %>
+    <% @user.centers.each do |center| %>
+    <li class="nav-header nav-header-sub">+ <%= center.name %> Campus</li>
+      <li class="<%= (@act_control == "places" && @center == center) ? 'active': '' %>"><%= link_to raw('<i class="icon-map-marker icon-grey"></i> Map'), center_places_path(center) %></li>
+      <li class="<%= ((@act_control == "emergency_contacts" && @center == center) || (@act_control == "emergency_phones" && @center == center)) ? 'active': '' %>"><%= link_to raw('<i class="icon-exclamation-sign icon-grey"></i> Emergency'), center_emergency_contacts_path(center) %></li>
+      <li class="<%= ((@act_control == "library_locations" && @center == center) || (@act_control == "library_hours" && @center == center) || (@act_control == "library_contacts" && @center == center)) ? 'active': '' %>"><%= link_to raw('<i class="icon-book icon-grey"></i> Libraries'), center_library_locations_path(center) %></li>
+    <% end %>
+  <% else %>
+    <% @user.centers.each do |center| %>
+      <li class="<%= (@act_control == "places") ? 'active': '' %>"><%= link_to raw('<i class="icon-map-marker icon-grey"></i> Map'), center_places_path(center) %></li>
+      <li class="<%= ((@act_control == "emergency_contacts") || (@act_control == "emergency_phones")) ? 'active': '' %>"><%= link_to raw('<i class="icon-exclamation-sign icon-grey"></i> Emergency Contacts'), center_emergency_contacts_path(center) %></li>
+      <li class="<%= (@act_control == "library_locations") ? 'active': '' %>"><%= link_to raw('<i class="icon-book icon-grey"></i> Libraries'), center_library_locations_path(center) %></li>
+    <% end %>
+  <% end %>
+</ul>

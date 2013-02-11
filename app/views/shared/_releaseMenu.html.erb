@@ -1,0 +1,7 @@
+<ul class="nav nav-list">
+  <li class="nav-header">Release</li>
+  <li class="<%= (@act_control == "project_info_pages") ? 'active': '' %>"><%= link_to raw('<i class="icon-info-sign icon-grey"></i> Project Info Page'), user_project_info_page_path(@user) %></li>
+  <li class="<%= (@act_control == "support_emails") ? 'active': '' %>"><%= link_to raw('<i class="icon-envelope icon-grey"></i> Support Email'), user_support_email_path(@user) %></li>
+  <li class="<%= (@act_control == "cnames") ? 'active': '' %>"><%= link_to raw('<i class="icon-magnet icon-grey"></i> CNAME'), user_cname_path(@user) %></li>
+  <li class="<%= (@act_control == "info_appstores") ? 'active': '' %>"><%= link_to raw('<i class="icon-list-alt icon-grey"></i> AppStore Information'), user_info_appstore_path(@user) %></li>
+</ul>

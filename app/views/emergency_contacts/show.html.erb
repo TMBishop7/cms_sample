@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @emergency_contact.name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @emergency_contact.phone %>
+</p>
+
+<p>
+  <b>Link url:</b>
+  <%= @emergency_contact.link_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_emergency_contact_path(@emergency_contact) %> |
+<%= link_to 'Back', emergency_contacts_path %>

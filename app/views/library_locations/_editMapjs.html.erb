@@ -1,0 +1,108 @@
+<script type="text/javascript">
+
+var resetPosition;
+var campusLat = <%= @center.latitude %>;
+var campusLng = <%= @center.longitude %>;
+
+function initialize() {
+
+	var saved = 1;
+	     	
+	// Array of styles.
+	var campusStyles = [
+	  {
+	    featureType: "all",
+	    stylers: [
+	      { hue: "#0019ff" },
+			  { gamma: 0.92 },
+			  { saturation: -20 },
+			  { lightness: 10 }
+	    ]
+	  },{
+	  	featureType: "poi.school",
+	    stylers: [
+	      { gamma: 0.97 },
+	      { hue: "#00ff00" }
+	    ]
+	  },{
+	    featureType: "road.arterial",
+	    elementType: "all",
+	    stylers: [
+	      { hue: "#0099ff" },
+	      { saturation: 0 },
+	      { lightness: 20 }
+	    ]
+	  }
+	];		
+	// Icon Image
+	// Create a new StyledMapType object, passing it the array of styles,
+	// as well as the name to be displayed on the map type control.
+	var campusMapType = new google.maps.StyledMapType(campusStyles, {name: "Campus"});	
+	// Create a map object, and include the MapTypeId to add
+	// to the map type control.
+	var mapOptions = {
+		zoom: 15,
+		center: new google.maps.LatLng(campusLat, campusLng),
+		streetViewControl: false,
+		disableDoubleClickZoom: true,
+		panControl: false,
+		mapTypeControlOptions: {
+		  mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'Campus']
+		  },
+		zoomControl: true,
+		zoomControlOptions: {
+		  style: google.maps.ZoomControlStyle.SMALL
+		  }
+	};
+
+	var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);		
+	// Associate the styled map with the MapTypeId and set it to display.
+	map.mapTypes.set('Campus', campusMapType);
+	map.setMapTypeId('Campus');
+   
+
+	$.getJSON('<%= escape_javascript(edit_center_library_location_path(@center, @library_location)) %>.json', function(json) {
+	      var pname = json.title;
+	      var placeId = json.id;
+	      var location = new google.maps.LatLng(json.latitude, json.longitude);
+    	  var thisIcon = '/img/parking-marker.png'; // marker images in Public directory!!!
+    	  var marker = new google.maps.Marker({
+		      position: location,
+			  draggable: true, 
+		      map: map,
+		      icon: thisIcon,
+		      title: pname,
+		      id: placeId
+		  });
+	  	  listenEditLibrary(marker);
+	});
+
+	// Listens for 'Click' event on Markers
+	// Checks isFocused global to see if user is currently editing Marker.
+	// If isFocused = false, grabs marker id and passes it to displayContents(). If true, then alert().
+	function listenEditLibrary (marker) {
+	  	google.maps.event.addListener(marker, 'drag', function(event) {
+	  		editLatLong(marker.getPosition());
+	  	});
+	  	google.maps.event.addListener(marker, 'dragend', function(event) {
+	  		editLatLong(marker.getPosition());
+	  	});
+	}
+
+	// This function called from dragging listeners, changes coords in lat/long input values inside marker editing form
+	function editLatLong(latLng) {
+		$('#library_location_latitude', $('.edit_library_location')).val(latLng.lat().toFixed(5));
+		$('#library_location_longitude', $('.edit_library_location')).val(latLng.lng().toFixed(5));
+	}
+
+	// Resets marker position if dragging latlong changes are discarded
+	resetPosition = function() {
+		if(saved != 1) {
+			currentMarker.setPosition(saved);
+		}
+		saved = 1;
+	}
+
+}
+
+</script>

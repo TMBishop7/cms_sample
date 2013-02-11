@@ -1,0 +1,5 @@
+$.ajax({
+	complete: function() {
+		$('#feedsEvents').html('<%= escape_javascript(render :partial => @eventsfeeds) %>');
+	}
+});

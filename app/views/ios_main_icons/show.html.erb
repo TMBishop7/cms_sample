@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @ios_main_icon.user_id %>
+</p>
+
+<p>
+  <b>Size type:</b>
+  <%= @ios_main_icon.size_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_ios_main_icon_path(@user, ios_main_icon) %> |
+<%= link_to 'Back', user_ios_main_icons_path %>

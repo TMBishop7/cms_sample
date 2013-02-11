@@ -1,0 +1,170 @@
+<%= form_for(@directory, :url => user_directory_path(@user)) do |f| %>
+  <% if @directory.errors.any? %>
+    <div class ="alert alert-error">
+      <b><%= pluralize(@directory.errors.count, "error") %> caught: </b>
+      <% @directory.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="field">
+        <%= f.label :ldap_server %>
+        <%= f.text_field :ldap_server, :class => 'span8' %>
+      </div><br />
+      <div class="field">
+        <%= f.label :ldap_port %>
+        <%= f.number_field :ldap_port, :class => 'span8' %>
+      </div><br />
+      <div class="field">
+        <%= f.label :ldap_base %>
+        <%= f.text_field :ldap_base, :class => 'span8' %>
+      </div>
+    </div>
+    <div class="span6">
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="field">
+        <%= f.label :first_name %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :first_name, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :last_name %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :last_name, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :full_name %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :full_name, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :title %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :title, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :department %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :department, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :affiliation %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :affiliation, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :address %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :address, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="field">
+        <%= f.label :home_phone %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :home_phone, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :email %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :email, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :room %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :room, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :unique_id %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :unique_id, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :telephone %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :telephone, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :fax %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :fax, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div><br />
+      <div class="field">
+        <%= f.label :office %>
+        <div class="input-prepend input-append">
+          <span class="add-on"><</span>
+          <%= f.text_field :office, :class => 'span8' %>
+          <span class="add-on">></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="actions">
+        <% if @directory.new_record? %>
+          <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large") do %>
+           <i class="icon-plus-sign icon-white"></i> Submit
+          <% end %>
+        <% else %>
+          <%= button_tag(:type => 'submit', class: "btn btn-success btn-large") do %>
+           <i class="icon-ok-sign icon-white"></i> Update
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+

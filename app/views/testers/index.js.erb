@@ -1,0 +1,5 @@
+$.ajax({
+	success: function() {
+		$('#testerList').html('<%= escape_javascript(render :partial => @testers) %>');
+	}
+});

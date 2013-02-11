@@ -1,0 +1,5 @@
+$.ajax({
+	success: function() {
+		$('#emcList').html('<%= escape_javascript(render :partial => @emergency_contacts) %>');
+	}
+});

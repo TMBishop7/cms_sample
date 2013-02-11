@@ -1,0 +1,34 @@
+<div class="box-model-header"><h1>Android Top Bar</h1></div>
+<div class="box-model-content">
+  <div class="row-fluid">
+    <div class="span12 guide">
+      <div class="count">
+        <h3>Editing</h3>
+        <div id="count" class="feed-count-empty">&#x2713;</div>
+      </div>
+      <%= render "shared/mini_guide" %>
+    </div>
+  </div>
+  <div class="row-fluid">
+      <div class="span12">
+        <div class="addnew">
+          <div id="androidMainIcon_form">
+            <%= render 'form' %>
+          </div>
+          <script>
+            createAndroidPicker();
+            barAndroidPreview();
+          </script>
+        </div>
+      </div>
+    </div>
+  <div class="row-fluid">
+    <div class="span12">
+    </div>
+  </div>
+  <div class="row-fluid new-lib">
+    <div class="span12 pagination-centered">
+      <%= link_to 'Back', user_android_topbar_path %>
+    </div>
+  </div>
+</div>

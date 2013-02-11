@@ -1,0 +1,33 @@
+<%= form_for(@library_worldcat, :url => user_library_worldcat_path(@user), :html => { :class => "form-inline" }) do |f| %>
+  <% if @library_worldcat.errors.any? %>
+    <div class ="alert alert-error">
+      <b><%= pluralize(@library_worldcat.errors.count, "error") %> caught: </b>
+      <% @library_worldcat.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span5 pad">
+      <%= f.text_field :search_key, :placeholder => "Search API Key", :class => "fullw" %>
+    </div>
+    <div class="field inline-field span3 pad">
+      <%= f.text_field :school_code, :placeholder => "School Code", :class => "fullw" %>
+    </div>
+    <% if @library_worldcat.new_record? %>
+     <div class="actions inline-field span4">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span4">
+      <%= button_tag(:type => 'submit', class: "btn btn-success btn-large pull-right") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

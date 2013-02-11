@@ -1,0 +1,182 @@
+<% if multi_center %>
+	<% @user.centers.each do |center| %>
+	    <div class="row-fluid checklist-row checklist-row-header">
+				<div class="span12 checklist-header"><h4>+ <%= center.name %> Campus</h4></div>
+			</div>
+			<div class="row-fluid checklist-row">
+	      <div class="span2 checklist-status">
+	      	<% if center.places.count >= 10 %>
+	      		<span class="badge badge-info"><%= center.places.count %></span>
+	      	<% else %>
+	      		<% if center.places.count == 0 %>
+	      			<span class="badge">0</span>
+	      		<% else %>
+	      			<span class="badge badge-warning"><%= center.places.count %></span>
+	      		<% end %>
+	      	<% end %>
+	      </div>
+	      <div class="span10"><h4>Map Places</h4></div>
+	    </div>
+	    <div class="row-fluid checklist-row">
+	      <div class="span2 checklist-status">
+	      	<% if center.emergency_contacts.count >= 1 %>
+	      		<span class="badge badge-info"><%= center.emergency_contacts.count %></span>
+	      	<% else %>
+	      		<span class="badge">0</span>		      	
+	      	<% end %>
+	      </div>
+	      <div class="span10"><h4>Emergency Contacts</h4></div>
+	    </div>
+	    <div class="row-fluid checklist-row">
+	      <div class="span2 checklist-status">
+	      	<% if center.emergency_phones.count >= 5 %>
+	      		<span class="badge badge-info"><%= center.emergency_phones.count %></span>
+	      	<% else %>
+	      		<% if center.emergency_phones.count == 0 %>
+	      			<span class="badge">0</span>
+	      		<% else %>
+	      			<span class="badge badge-warning"><%= center.emergency_phones.count %></span>
+	      		<% end %>
+	      	<% end %>
+	      </div>
+	      <div class="span10"><h4>Emergency Phones</h4></div>
+	    </div>
+	    <div class="row-fluid checklist-row">
+	      	<% if center.library_locations.count >= 1 %>
+				<div class="span2 checklist-status">
+					<span class="badge badge-info"><%= center.library_locations.count %></span>
+				</div>
+			  	<div class="span10">
+				  	<div class="row-fluid sub-status-parent"><h4>Libraries</h4></div>
+			  		<% center.library_locations.each do |library_location| %>
+			  		  <div class="sub-status-wrap">
+				  		<div class="row-fluid sub-status-header"></div>
+				  		<div class="row-fluid sub-status">
+				  			<div class="span6"><h4 class="sub-lib-title"><%= library_location.title %></h4></div>
+				  			<div class="span2">
+				  				<% if library_location.library_hours.count == 0 %>
+				  					<span class="badge">0</span>
+				  				<% else %>
+				  					<% if library_location.library_hours.count == 7 %>
+				  						<span class="badge badge-info"><%= library_location.library_hours.count %></span>
+				  					<% else %>
+				  						<span class="badge badge-warning"><%= library_location.library_hours.count %></span>
+				  					<% end %>
+				  				<% end %>
+				  			</div>
+				  			<div class="span4"><h4>Hours</h4></div>
+				 		</div>
+				 		<div class="row-fluid sub-status">
+				 			<div class="span6"></div>
+				  			<div class="span2">
+				  				<% if library_location.library_contacts.count >= 1 %>
+				  					<span class="badge badge-info"><%= library_location.library_contacts.count %></span>
+				  				<% else %>
+				  					<span class="badge">0</span>
+				  				<% end %>
+				  			</div>
+				  			<div class="span4"><h4>Contacts</h4></div>
+				 		</div>
+				 	  </div>	
+			  		<% end %>
+			  	</div>
+			<% else %>
+				<div class="span2 checklist-status">
+					<span class="badge">0</span>
+				</div>
+				<div class="span10">
+			  		<h4>Libraries</h4>
+			    </div>
+			<% end %>
+	    </div>
+	<% end %>
+<% else %>
+	<% @user.centers.each do |center| %>
+		<div class="row-fluid checklist-row">
+	      <div class="span2 checklist-status">
+	      	<% if center.places.count >= 10 %>
+	      		<span class="badge badge-info"><%= center.places.count %></span>
+	      	<% else %>
+	      		<% if center.places.count == 0 %>
+	      			<span class="badge">0</span>
+	      		<% else %>
+	      			<span class="badge badge-warning"><%= center.places.count %></span>
+	      		<% end %>
+	      	<% end %>
+	      </div>
+	      <div class="span10"><h4>Map Places</h4></div>
+	    </div>
+	    <div class="row-fluid checklist-row">
+	      <div class="span2 checklist-status">
+	      	<% if center.emergency_contacts.count >= 1 %>
+	      		<span class="badge badge-info"><%= center.emergency_contacts.count %></span>
+	      	<% else %>
+	      		<span class="badge">0</span>		      	
+	      	<% end %>
+	      </div>
+	      <div class="span10"><h4>Emergency Contacts</h4></div>
+	    </div>
+	    <div class="row-fluid checklist-row">
+	      <div class="span2 checklist-status">
+	      	<% if center.emergency_phones.count >= 5 %>
+	      		<span class="badge badge-info"><%= center.emergency_phones.count %></span>
+	      	<% else %>
+	      		<% if center.emergency_phones.count == 0 %>
+	      			<span class="badge">0</span>
+	      		<% else %>
+	      			<span class="badge badge-warning"><%= center.emergency_phones.count %></span>
+	      		<% end %>
+	      	<% end %>
+	      </div>
+	      <div class="span10"><h4>Emergency Phones</h4></div>
+	    </div>
+	    <div class="row-fluid checklist-row">
+	      	<% if center.library_locations.count >= 1 %>
+				<div class="span2 checklist-status">
+					<span class="badge badge-info"><%= center.library_locations.count %></span>
+				</div>
+			  	<div class="span10">
+				  	<div class="row-fluid sub-status-parent"><h4>Libraries</h4></div>
+			  		<% center.library_locations.each do |library_location| %>
+			  		  <div class="sub-status-wrap">
+				  		<div class="row-fluid sub-status-header"></div>
+				  		<div class="row-fluid sub-status">
+				  			<div class="span6"><h4 class="sub-lib-title"><%= library_location.title %></h4></div>
+				  			<div class="span2">
+				  				<% if library_location.library_hours.count == 0 %>
+				  					<span class="badge">0</span>
+				  				<% else %>
+				  					<% if library_location.library_hours.count == 7 %>
+				  						<span class="badge badge-info"><%= library_location.library_hours.count %></span>
+				  					<% else %>
+				  						<span class="badge badge-warning"><%= library_location.library_hours.count %></span>
+				  					<% end %>
+				  				<% end %>
+				  			</div>
+				  			<div class="span4"><h4>Hours</h4></div>
+				 		</div>
+				 		<div class="row-fluid sub-status">
+				 			<div class="span6"></div>
+				  			<div class="span2">
+				  				<% if library_location.library_contacts.count >= 1 %>
+				  					<span class="badge badge-info"><%= library_location.library_contacts.count %></span>
+				  				<% else %>
+				  					<span class="badge">0</span>
+				  				<% end %>
+				  			</div>
+				  			<div class="span4"><h4>Contacts</h4></div>
+				 		</div>
+				 	  </div>	
+			  		<% end %>
+			  	</div>
+			<% else %>
+				<div class="span2 checklist-status">
+					<span class="badge">0</span>
+				</div>
+				<div class="span10">
+			  		<h4>Libraries</h4>
+			    </div>
+			<% end %>		    
+	    </div>
+	<% end %>
+<% end %>

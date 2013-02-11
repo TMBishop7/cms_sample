@@ -1,0 +1,13 @@
+$.ajax({
+	success: function() {
+		$('.listItemInner').empty();
+		$('#edit-box > div').hide();
+		setFalse();
+		$('#edit-box').empty();
+		$('#edit-box').html('<%= escape_javascript(render(@places)) %>',
+			'<div id="new-place-form" style="display:none;">',
+			'<%= escape_javascript(render("form")) %>',
+			'<div id="killNew" class="kill" onclick="clearForm();">x</div></div>');
+		loadMaps();
+	}
+});

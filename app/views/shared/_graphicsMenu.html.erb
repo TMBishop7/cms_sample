@@ -1,0 +1,17 @@
+<ul class="nav nav-list">
+  <li class="nav-header">Graphics</li>
+  <li class="nav-header nav-header-sub">iOS</li>
+  <li class="<%= (@act_control == "ios_main_icons") ? 'active': '' %>"><%= link_to raw('<i class="icon-th-large icon-grey"></i> Main Icon'), [@user, :ios_main_icons] %></li>
+  <li class="<%= (@act_control == "ios_feature_icons") ? 'active': '' %>"><%= link_to raw('<i class="icon-th icon-grey"></i> Features Icons'), [@user, :ios_feature_icons] %></li>
+  <li class="<%= (@act_control == "ios_backgrounds") ? 'active': '' %>"><%= link_to raw('<i class="icon-file icon-grey"></i> Backgrounds'), [@user, :ios_backgrounds] %></li>
+  <li class="<%= (@act_control == "ios_topbars") ? 'active': '' %>"><%= link_to raw('<i class="icon-pencil icon-grey"></i> Top Bar Color'), user_ios_topbar_path(@user) %></li>
+  <li class="nav-header nav-header-sub">Android</li>
+  <li class="<%= (@act_control == "android_main_icons") ? 'active': '' %>"><%= link_to raw('<i class="icon-th-large icon-grey"></i> Main Icon'), [@user, :android_main_icons] %></li>
+  <li class="<%= (@act_control == "android_feature_icons") ? 'active': '' %>"><%= link_to raw('<i class="icon-th icon-grey"></i> Features Icons'), [@user, :android_feature_icons] %></li>
+  <li class="<%= (@act_control == "android_backgrounds") ? 'active': '' %>"><%= link_to raw('<i class="icon-file icon-grey"></i> Backgrounds'), [@user, :android_backgrounds] %></li>
+  <li class="<%= (@act_control == "android_topbars") ? 'active': '' %>"><%= link_to raw('<i class="icon-pencil icon-grey"></i> Top Bar Color'), user_android_topbar_path(@user) %></li>
+  <li class="nav-header nav-header-sub">Mobile Web</li>
+  <li class="<%= (@act_control == "mobile_web_feature_icons") ? 'active': '' %>"><%= link_to raw('<i class="icon-th icon-grey"></i> Features Icons'), [@user, :mobile_web_feature_icons] %></li>
+  <li class="<%= (@act_control == "mobile_web_topbars") ? 'active': '' %>"><%= link_to raw('<i class="icon-pencil icon-grey"></i> Top Bar Color'), user_mobile_web_topbar_path(@user) %></li>
+  <li class="<%= (@act_control == "mobile_web_logos") ? 'active': '' %>"><%= link_to raw('<i class="icon-tag icon-grey"></i> Logos'), [@user, :mobile_web_logos] %></li>
+</ul>

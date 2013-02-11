@@ -1,0 +1,5 @@
+$.ajax({
+	success: function() {
+		$('#androidMainList').html('<%= escape_javascript(render :partial => @android_main_icons) %>');
+	}
+});

@@ -1,0 +1,38 @@
+<%= form_for([@user, @eventsfeed], :remote => true, :html => { :class => "form-inline" }) do |f| %>
+  <% if @eventsfeed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@eventsfeed.errors.count, "error") %> prohibited this Feed from being saved:</h2>
+
+      <ul>
+      <% @eventsfeed.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span1 pad">
+      <%= f.text_field :color, :class => "fullw" %>
+    </div>
+    <div class="field inline-field span3 pad">
+      <%= f.text_field :title, :placeholder => "Title", :class => "fullw" %>
+    </div>
+    <div class="field inline-field span5 pad">
+      <%= f.text_field :ical_url, :placeholder => "iCal Feed URL", :class => "fullw" %>
+    </div>
+    <% if @eventsfeed.new_record? %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span3 pad">
+      <%= button_tag(:type => 'submit', class: "btn btn-success") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

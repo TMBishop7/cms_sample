@@ -1,0 +1,196 @@
+<script type="text/javascript">
+
+var campusLat = <%= @center.latitude %>;
+var campusLng = <%= @center.longitude %>;
+var setTrue, setFalse, clearForm;
+
+function initialize() {
+
+	var isFocused = false;
+	var madeChanges = false;
+	var tPos = 1;
+	var currentMarker, dNum, iNum, fNum;	     	
+	// Array of styles.
+	var campusStyles = [
+	  {
+	    featureType: "all",
+	    stylers: [
+	      { hue: "#0019ff" },
+			  { gamma: 0.92 },
+			  { saturation: -20 },
+			  { lightness: 10 }
+	    ]
+	  },{
+	  	featureType: "poi.school",
+	    stylers: [
+	      { gamma: 0.97 },
+	      { hue: "#00ff00" }
+	    ]
+	  },{
+	    featureType: "road.arterial",
+	    elementType: "all",
+	    stylers: [
+	      { hue: "#0099ff" },
+	      { saturation: 0 },
+	      { lightness: 20 }
+	    ]
+	  }
+	];			
+	// Create a new StyledMapType object, passing it the array of styles,
+	// as well as the name to be displayed on the map type control.
+	var campusMapType = new google.maps.StyledMapType(campusStyles, {name: "Campus"});	
+	// Create a map object, and include the MapTypeId to add
+	// to the map type control.
+	var mapOptions = {
+		zoom: 15,
+		center: new google.maps.LatLng(campusLat, campusLng),
+		streetViewControl: false,
+		disableDoubleClickZoom: true,
+		panControl: false,
+		mapTypeControlOptions: {
+		  mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'Campus']
+		  },
+		zoomControl: true,
+		zoomControlOptions: {
+		  style: google.maps.ZoomControlStyle.SMALL
+		  }
+	};
+	var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);		
+	// Associate the styled map with the MapTypeId and set it to display.
+	map.mapTypes.set('Campus', campusMapType);
+	map.setMapTypeId('Campus');       
+	$.getJSON("places.json", function(json) {
+		for(var i = 0; i < json.length; i++) {
+		      var pname = json[i].name;
+		      var placeId = json[i].id;
+		      var location = new google.maps.LatLng(json[i].latitude, json[i].longitude);
+	    	  var thisIcon = '/img/' + json[i].marktype + '-marker.png'; // marker images in Public directory!!!
+	    	  var marker = new google.maps.Marker({
+			      position: location,
+				  draggable: false, 
+			      map: map,
+			      icon: thisIcon,
+			      title: pname,
+			      id: placeId
+			  });
+	    	  listenMarker(marker);
+	    	}
+	});
+	// Listens for 'Click' event on Markers
+	// Checks isFocused global to see if user is currently editing Marker.
+	// If isFocused = false, grabs marker id and passes it to displayContents(). If true, then alert().
+	function listenMarker (marker) {
+	  	google.maps.event.addListener(marker, 'click', function(event) {
+	  		if(isFocused == false) {
+	  			currentMarker = marker;
+	  			dNum = '#ed_'+marker.id;
+	  			iNum = '#inner_place_'+marker.id;
+	  			fNum = '#edit_place_'+marker.id;
+	  			var mNum = '#place_'+marker.id;
+	  			displayContents(mNum);
+	  		}
+	  		else if(isFocused == true && marker != currentMarker) {
+	  			alert('You are currently creating/editing another marker.'); 
+	  		}  		
+		});
+	}
+	// receives param from listenMarker() to display marker's corresponding div
+	function displayContents(mNum) {
+		$(mNum, $('#edit-box')).toggle();
+		$('#edit-box > div').not(mNum).hide();
+	}
+	// Defined globally, called from edit-box when user clicks on marker's 'Edit' button
+	// Enables draggability for marker, adds dragging listeners, sets isFocused to true to prevent clicking on other markers
+	setTrue = function() {
+		isFocused = true;
+		var marker = currentMarker;
+		tPos = marker.getPosition();
+		google.maps.event.addDomListener(
+			$(dNum, $('#edit-box')),
+			'click',
+			marker.setDraggable(true)
+		);
+		google.maps.event.addListener(marker, 'drag', function(event) {
+	  		editLatLong(marker.getPosition());
+	  	});
+	  	google.maps.event.addListener(marker, 'dragend', function(event) {
+	  		editLatLong(marker.getPosition());
+	  	});
+	}
+	// Defined globally, called from edit-box when user click's on the 'x' to close edit form.
+	// Sets isFocused back to false, to allow clicking on other markers
+	setFalse = function() {
+		isFocused = false;
+		google.maps.event.addDomListener(
+			$('.kill', $(iNum)),
+			'click',
+			currentMarker.setDraggable(false)
+		);
+		resetMarker();
+	}
+	// This function called from dragging listeners, changes coords in lat/long input values inside marker editing form
+	function editLatLong(latLng) {
+		$('#place_latitude', $(fNum)).val(latLng.lat().toFixed(5));
+		$('#place_longitude', $(fNum)).val(latLng.lng().toFixed(5));
+	}
+	// Resets marker position if dragging latlong changes are discarded
+	function resetMarker() {
+		if(tPos != 1) {
+			currentMarker.setPosition(tPos);
+		} else {
+			tPos = 1;
+		}
+	}
+	// Drops Marker on map
+	google.maps.event.addListener(map, "dblclick", function(event) {		        		
+		dropNewMarker(event.latLng);        				        		        		  		        
+	});
+	function dropNewMarker(location) {
+		if(isFocused == false) {
+		  	var marker = new google.maps.Marker({
+		      position: location,
+			  draggable: true, 
+		      map: map,
+		      icon: '/img/new-marker.png'
+		  	});
+		  	$('#new-place-form').show();
+		  	$('#edit-box > div').not('#new-place-form').hide();
+		  	isFocused = true;
+		  	var local = marker;
+		  	newForm(marker.getPosition());
+		  	google.maps.event.addListener(marker, 'drag', function(event) {
+	  			newForm(marker.getPosition());
+		  	});
+		  	google.maps.event.addListener(marker, 'dragend', function(event) {
+		  		newForm(marker.getPosition());
+		  	});
+		  	clearForm = function() {
+				$('#place_latitude', $('#new_place')).val(" ");
+				$('#place_longitude', $('#new_place')).val(" ");
+				$('#new-place-form').hide();
+				local.setMap(null);
+				isFocused = false;
+			}
+	  	}
+	  	else if(isFocused == true) {
+	  		alert('You are currently creating/editing another Marker.');
+	  	}		  				  				  
+	}
+
+}
+function newForm(latLng) {
+	$('#place_latitude', $('#new_place')).val(latLng.lat().toFixed(5));
+	$('#place_longitude', $('#new_place')).val(latLng.lng().toFixed(5));
+} 
+function loadMaps() {
+	initialize();
+}
+function refreshPlaces() {
+	$('#edit-box').empty();
+	$('#edit-box').html('<%= escape_javascript(render(@places)) %>'+
+			'<div id="new-place-form" style="display:none;">'+
+			'<%= escape_javascript(render("form")) %>'+
+			'<div id="killNew" class="kill" onclick="clearForm();">x</div></div>');
+	initialize();
+}
+</script>

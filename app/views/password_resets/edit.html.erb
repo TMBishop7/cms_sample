@@ -1,0 +1,35 @@
+<div class="login-container">
+  <div class="login-header">
+    <h2>Reset Password</h2>
+  </div>
+  <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+    <% if @user.errors.any? %>
+      <div class ="alert alert-error">
+        <b>Form in invalid. </b>
+        <% for message in @user.errors.full_messages %>
+          <%= message %>
+        <% end %>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
+    <% end %>
+    <div class="row-fluid">
+       <div class="field">
+          <%= f.label :password, "New Password", :class => 'login-label' %>
+          <%= f.password_field :password %>
+       </div>
+      </div>
+      <br />
+      <div class="row-fluid">
+       <div class="field">
+          <%= f.label :password_confirmation, "New Password Confirmation", :class => 'login-label' %>
+          <%= f.password_field :password_confirmation %>
+       </div>
+    </div>
+      <br />
+      <div class="row-fluid">
+       <div class="actions">
+        <%= f.submit "Update Password", :class => 'btn btn-success pull-right' %>
+       </div>
+      </div>
+  <% end %>
+</div>

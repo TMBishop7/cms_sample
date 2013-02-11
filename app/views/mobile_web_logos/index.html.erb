@@ -1,0 +1,28 @@
+<div class="box-model-header"><h1>Mobile Web Logos</h1></div>   
+<div class="box-model-content">
+  <div class="row-fluid">
+    <div class="span12 guide">
+      <div class="count">
+        <h3>Sizes</h3>
+        <div id="count" class="feed-count"><%= @mobile_web_logos.count %></div>
+      </div>
+      <%= render "shared/mini_guide" %>
+    </div>
+  </div>
+  <div class="row-fluid">
+      <div class="span12">
+        <div class="addnew">
+          <div id="mobileWebLogo_form">
+            <%= render 'form' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <ul id="mobileWebLogoList" class="showList">
+        <%= render @mobile_web_logos %>
+      </ul>
+    </div>
+  </div>
+</div>

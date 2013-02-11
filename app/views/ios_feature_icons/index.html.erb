@@ -1,0 +1,26 @@
+<div class="box-model-header"><h1>iOS Features Icons</h1></div>   
+<div class="box-model-content">
+  <div class="row-fluid">
+    <div class="span12 guide">
+      <div class="count">
+        <h3>Sizes</h3>
+        <div id="count" class="feed-count"><%= @ios_feature_icons.count %></div>
+      </div>
+      <%= render "shared/mini_guide" %>
+    </div>
+  </div>
+  <div class="row-fluid">
+      <div class="span12">
+        <div class="addnew">
+          <div id="iosFeatureIcon_form">
+            <%= render 'form' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <ul id="iosFeatureList" class="showList"><%= render @ios_feature_icons %></ul>
+    </div>
+  </div>
+</div>

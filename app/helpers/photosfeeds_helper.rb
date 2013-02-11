@@ -1,0 +1,2 @@
+module PhotosfeedsHelper
+end

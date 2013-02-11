@@ -1,0 +1,96 @@
+<div class="row-fluid">
+    <div class="span12">
+      <ul class="nav nav-tabs home-tabs">
+        <li class="active">
+          <%= link_to "Features", {:action => "tab_feat"}, :remote => true %>
+        </li>
+        <li>
+          <%= link_to "Graphics", {:action => "tab_graph"}, :remote => true %>
+        </li>
+        <li>
+          <%= link_to "Distribution", {:action => "tab_dist"}, :remote => true %>
+        </li>
+        <li>
+          <%= link_to "Release", {:action => "tab_rel"}, :remote => true %>
+        </li>
+      </ul>
+    </div>
+</div>
+<div class="row-fluid chcklst">
+  <div class="span12 checklist">
+  	  <div class="row-fluid checklist-row checklist-row-header">
+  		  <div class="span12 checklist-header"><h4>All</h4></div>
+  	  </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+        	<% if @user.newsfeeds.count == 0 %>
+        		<span class="badge badge-warning">0</span>
+        	<% else %>
+        		<span class="badge badge-info"><%= @user.newsfeeds.count %></span>
+        	<% end %>
+        </div>
+        <div class="span10"><h4>News Feeds</h4></div>
+      </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+        	<% if @user.photosfeeds.count == 0 %>
+        		<span class="badge badge-warning">0</span>
+        	<% else %>
+        		<span class="badge badge-info"><%= @user.photosfeeds.count %></span>
+        	<% end %>
+        </div>
+        <div class="span10"><h4>Photo Albums</h4></div>
+      </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+        	<% if @user.videosfeeds.count == 0 %>
+        		<span class="badge badge-warning">0</span>
+        	<% else %>
+        		<span class="badge badge-info"><%= @user.videosfeeds.count %></span>
+        	<% end %>
+        </div>
+        <div class="span10"><h4>Video Channels</h4></div>
+      </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+        	<% if @user.eventsfeeds.count == 0 %>
+        		<span class="badge badge-warning">0</span>
+        	<% else %>
+        		<span class="badge badge-info"><%= @user.eventsfeeds.count %></span>
+        	<% end %>
+        </div>
+        <div class="span10"><h4>Events Feeds</h4></div>
+      </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+        	<% if @user.directory != nil %>
+        		<span class="badge badge-info">&#x2713;</span>
+        	<% else %>
+        		<span class="badge">0</span>
+        	<% end %>
+        </div>
+        <div class="span10"><h4>Directory</h4></div>
+      </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+        	<% if @user.athletic != nil %>
+        		<span class="badge badge-info">&#x2713;</span>
+        	<% else %>
+        		<span class="badge">0</span>
+        	<% end %>
+        </div>
+        <div class="span10"><h4>Athletics</h4></div>
+      </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+        	<% if @user.library_worldcat != nil %>
+        		<span class="badge badge-info">&#x2713;</span>
+        	<% else %>
+        		<span class="badge">0</span>
+        	<% end %>
+        </div>
+        <div class="span10"><h4>Library Settings</h4></div>
+      </div>
+      <%= render 'shared/center_features' %>
+  </div>
+</div>

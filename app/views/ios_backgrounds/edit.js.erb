@@ -1,0 +1,12 @@
+// Sets title of Modal
+$('.modal-title').html('Editing iOS Background');
+// Fades spinner out, fades content in
+$('.ajax-loader').fadeOut('fast', function() {
+  $('.modal-body-content').hide().html('<div id="modal-inner"><%= escape_javascript(render "form") %></div>').fadeIn('slow');
+});
+// Empty contents when user closes
+$('#modal-close-btn').on('click', 'a[data-remote=true]', function(){
+  $('.modal-body-content').fadeOut('slow', function() {
+    $('.modal-body-content > #modal-inner').remove();
+  });
+});

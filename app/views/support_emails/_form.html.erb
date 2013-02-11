@@ -1,0 +1,30 @@
+<%= form_for(@support_email, :url => user_support_email_path(@user), :html => { :class => "form-inline" }) do |f| %>
+  <% if @support_email.errors.any? %>
+    <div class ="alert alert-error">
+      <b><%= pluralize(@support_email.errors.count, "error") %> caught: </b>
+      <% @support_email.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span6 pad">
+      <%= f.text_field :email_alias, :placeholder => "Email Address", :class => "fullw" %>
+    </div>
+    <% if @support_email.new_record? %>
+     <div class="actions inline-field span6">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span6">
+      <%= button_tag(:type => 'submit', class: "btn btn-success btn-large pull-right") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

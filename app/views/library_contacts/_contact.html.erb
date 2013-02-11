@@ -1,0 +1,24 @@
+<% @library_location.library_contacts.each do |library_contact| %>
+  <div class="row-fluid show-lib-hc">
+      <div class="span1"><div class="cms-icon icon-small cms-book-small"></div></div>
+      <div class="span3 hc-left">
+        <h4><%= library_contact.title %></h4>
+      </div>
+      <div class="span2 hc-middle">
+        <p><%= library_contact.phone %></p>
+      </div>
+      <div class="span3 hc-middle">
+        <p><%= library_contact.email %></p>
+      </div>
+      <div class="span3 hc-controls">
+        <div class="current-actions-wrap">
+          <div class="current-actions">
+          <div class="btn-group">
+          <%= link_to 'Edit', edit_center_library_location_library_contact_path(@center, @library_location, library_contact), :class => 'btn btn-small' %>
+          <%= link_to 'Delete', [@center, @library_location, library_contact], :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small' %>
+          </div>
+          </div>
+        </div>
+      </div>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<%= content_tag_for :li, ios_feature_icon do %>
+	<div class="row-fluid">
+		<div class="span2 features-prev"><%= image_tag ios_feature_icon.icon_image.url %></div>
+		<div class="span7 list-left">
+	  		<% if ios_feature_icon.icon_size == '57x57' %>
+	  			<h4><%= ios_feature_icon.feature_name %></h4>
+		  	<% else %>
+		  		<h4><%= ios_feature_icon.feature_name %>@2x</h4>
+		  	<% end %>
+	  			<p><%= ios_feature_icon.icon_size %></p>
+	  	</div>
+	  	<div class="span3 list-controls">
+	  		<div class="current-actions-wrap">
+	  			<div class="current-actions">
+			  	<div class="btn-group">
+			  	<%= link_to raw('<i class="icon-edit"></i> Edit'), edit_user_ios_feature_icon_path(@user, ios_feature_icon), :remote => true, :class => 'btn btn-small' %>
+			  	<%= link_to raw('<i class="icon-trash"></i> Delete'), [@user, ios_feature_icon], :confirm => 'Are you sure?', :method => :delete, :remote => true, :class => 'btn btn-small' %>
+			  	</div>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<div id="inner_<%= dom_id(ios_feature_icon) %>" class="row-fluid listItemInner"></div>
+<% end %>

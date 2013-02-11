@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @tester.email %>
+</p>
+
+<p>
+  <b>Platform:</b>
+  <%= @tester.platform %>
+</p>
+
+<p>
+  <b>Udid:</b>
+  <%= @tester.udid %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @tester.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_tester_path(@tester) %> |
+<%= link_to 'Back', testers_path %>

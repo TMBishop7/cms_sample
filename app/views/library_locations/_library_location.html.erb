@@ -1,0 +1,19 @@
+<%= content_tag_for :li, library_location do %>
+    <div class="row-fluid">
+      <div class="span2"><img src="<%= library_location.image_thumbnail_url %>" class="lib-preview" alt="preview" /></div>
+      <div class="span6 list-left">
+        <h4><%= library_location.title %></h4>
+        <p><%= library_location.latitude %>, <%= library_location.longitude %></p>
+      </div>
+      <div class="span4 list-controls">
+        <div class="current-actions-wrap">
+          <div class="lib-current-actions">
+            <div class="btn-group">
+            <%= link_to raw('<i class="icon-eye-open"></i> Update'), center_library_location_path(@center, library_location), :class => 'btn btn-small' %>
+            <%= link_to raw('<i class="icon-trash"></i> Delete'), [@center, library_location], :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

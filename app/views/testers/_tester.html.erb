@@ -1,0 +1,20 @@
+<%= content_tag_for :li, tester do %>
+	<div class="row-fluid">
+		<div class="span1"><div class="cms-icon cms-<%= tester.platform %>"></div></div>
+		<div class="span8 list-left">
+	  		<h4><%= tester.email %></h4>
+	  		<p><i class="lighter"><%= tester.platform %></i> | <%= tester.udid %></p>
+	  	</div>
+	  	<div class="span3 list-controls">
+	  		<div class="current-actions-wrap">
+	  			<div class="current-actions">
+			  	<div class="btn-group">
+			  	<%= link_to raw('<i class="icon-edit"></i> Edit'), edit_user_tester_path(@user, tester), :remote => true, :class => 'btn btn-small' %>
+			  	<%= link_to raw('<i class="icon-trash"></i> Delete'), [@user, tester], :confirm => 'Are you sure?', :method => :delete, :remote => true, :class => 'btn btn-small' %>
+			  	</div>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<div id="inner_<%= dom_id(tester) %>" class="row-fluid listItemInner"></div>
+<% end %>

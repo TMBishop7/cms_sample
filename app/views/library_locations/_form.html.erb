@@ -1,0 +1,41 @@
+<%= form_for([@center, @library_location]) do |f| %>
+  <% if @library_location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@library_location.errors.count, "error") %> prohibited this library_location from being saved:</h2>
+
+      <ul>
+      <% @library_location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <h5 class="toplabel">Title</h5>
+    <%= f.text_field :title, :placeholder => "Library Name", :class => "eightw" %>
+  </div>
+  <div class="field">
+    <h5 class="toplabel">Thumbnail URL</h5>
+    <%= f.text_field :image_thumbnail_url, :placeholder => "Image URL", :class => "eightw" %>
+  </div>
+  <div class="field">
+    <h5 class="toplabel">Latitude</h5>
+    <%= f.text_field :latitude, :placeholder => "- Drag Marker -", :class => "fivew" %>
+  </div>
+  <div class="field">
+    <h5 class="toplabel">Longitude</h5>
+    <%= f.text_field :longitude, :placeholder => "- Drag Marker -", :class => "fivew" %>
+  </div><br />
+  <div class="actions">
+    <% if @library_location.new_record? %>
+      <%= button_tag(:type => 'submit', class: "btn btn-primary") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+    <% else %>
+      <%= button_tag(:type => 'submit', class: "btn btn-success") do %>
+       <i class="icon-ok-sign icon-white"></i> Update
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

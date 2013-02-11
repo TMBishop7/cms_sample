@@ -1,0 +1,2 @@
+module IosMainIconsHelper
+end

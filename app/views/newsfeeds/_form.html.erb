@@ -1,0 +1,35 @@
+<%= form_for([@user, @newsfeed], :remote => true, :html => { :class => "form-inline" }) do |f| %>
+  <% if @newsfeed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@newsfeed.errors.count, "error") %> prohibited this newsfeed from being saved:</h2>
+
+      <ul>
+      <% @newsfeed.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span4 pad">
+      <%= f.text_field :title, :placeholder => "Title", :class => "fullw" %>
+    </div>
+    <div class="field inline-field span5 pad">
+      <%= f.text_field :feed_url, :placeholder => "Feed URL", :class => "fullw" %>
+    </div>
+    <% if @newsfeed.new_record? %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span3 pad">
+      <%= button_tag(:type => 'submit', class: "btn btn-success") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

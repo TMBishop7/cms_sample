@@ -1,0 +1,12 @@
+$('#inner_<%= dom_id(@eventsfeed) %>').html(
+	'<%= escape_javascript(render "form") %></div>' +
+	'<a class="kill" href="#">&times;</a>');
+
+function editPicker() {
+	$('#eventsfeed_color', $('#edit_<%= dom_id(@eventsfeed) %>')).spectrum({ preferredFormat: "hex", showInput: true });
+}
+editPicker();
+
+$('.kill', $('#inner_<%= dom_id(@eventsfeed) %>')).click(function() {
+	$('#inner_<%= dom_id(@eventsfeed) %>').html("");
+});

@@ -1,0 +1,5 @@
+$.ajax({
+	complete: function() {
+		$('#feedsVideos').html('<%= escape_javascript(render :partial => @videosfeeds) %>');
+	}
+});

@@ -1,0 +1,8 @@
+$.ajax({
+	success: function() {
+		$('#edit-box').append('<%= escape_javascript(render(@place)) %>');
+		$('#new-place-form > form')[0].reset();
+		$('#new-place-form').toggle();
+		loadMaps();
+	}
+});

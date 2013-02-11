@@ -1,0 +1,43 @@
+<div class="box-model-header"><h1>Android Top Bar</h1></div>  
+<div class="box-model-content">
+  <div class="row-fluid">
+    <div class="span12 guide">
+      <div class="count">
+        <h3>Ready</h3>
+        <div id="count" class="feed-count">&#x2713;</div>
+      </div>
+      <%= render "shared/mini_guide" %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="tb-contain">
+        <div id="topbar-preview" style="background: <%= @android_topbar.top_hex_color %>;
+          		background: -moz-linear-gradient(top, <%= @android_topbar.top_hex_color %>, <%= @android_topbar.bottom_hex_color %>);
+          		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,<%= @android_topbar.top_hex_color %>), color-stop(100%,<%= @android_topbar.bottom_hex_color %>));
+          		background: -webkit-linear-gradient(top, <%= @android_topbar.top_hex_color %>, <%= @android_topbar.bottom_hex_color %>);
+          		background: -o-linear-gradient(top, <%= @android_topbar.top_hex_color %>, <%= @android_topbar.bottom_hex_color %>);
+          		background: -ms-linear-gradient(top, <%= @android_topbar.top_hex_color %>, <%= @android_topbar.bottom_hex_color %>);
+          		background: linear-gradient(to bottom, <%= @android_topbar.top_hex_color %>, <%= @android_topbar.bottom_hex_color %>);
+          		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<%= @android_topbar.top_hex_color %>', endColorstr='<%= @android_topbar.bottom_hex_color %>',GradientType=0 );">
+          <div id="android-hex"><h4 class="topbar-label"><%= @android_topbar.top_hex_color %> &mdash; <%= @android_topbar.bottom_hex_color %></h4></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="center-btns">
+        <div class="btn-group">
+        	<%= link_to raw('<i class="icon-edit"></i> Edit'), edit_user_android_topbar_path, :class => 'btn' %>
+          <%= link_to raw('<i class="icon-trash"></i> Delete'), user_android_topbar_path(@user), :confirm => 'Are you sure?', :method => :delete, :class => 'btn' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+$.ajax({
+	success: function() {
+		$('#feedsNews').html('<%= escape_javascript(render :partial => @newsfeeds) %>');
+	}
+});

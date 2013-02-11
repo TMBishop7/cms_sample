@@ -1,0 +1,38 @@
+<%= form_for([@user, @mobile_web_logo], :remote => true, :html => { :multipart => true, :class => "form-inline" }) do |f| %>
+  <% if @mobile_web_logo.errors.any? %>
+    <div class ="alert alert-error">
+      <b><%= pluralize(@mobile_web_logo.errors.count, "error") %> caught: </b>
+      <% @mobile_web_logo.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span4 pad">
+      <%= f.select :logo_size, LOGO_SIZES %>
+    </div>
+    <div class="field inline-field span4 pad">
+      <span class="btn btn-file fileinput-button">
+        <i class="icon-file icon-blue"></i>
+        <span>Select...</span>
+        <%= f.file_field :icon_image, :class => "file-prev" %>
+      </span>
+      <div class="show-prev"></div>
+    </div>
+    <% if @mobile_web_logo.new_record? %>
+     <div class="actions inline-field span4">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span4 pad">
+      <%= button_tag(:type => 'submit', class: "btn btn-success") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

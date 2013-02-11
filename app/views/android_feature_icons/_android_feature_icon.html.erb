@@ -1,0 +1,28 @@
+<%= content_tag_for :li, android_feature_icon do %>
+	<div class="row-fluid">
+		<div class="span2 features-prev"><%= image_tag android_feature_icon.icon_image.url %></div>
+		<div class="span7 list-left">
+	  		<% if android_feature_icon.icon_size == '57x57' %>
+	  			<h4><%= android_feature_icon.feature_name %>_mdpi</h4>
+		  	<% else %>
+		  		<% if android_feature_icon.icon_size == '86x86' %>
+		  			<h4><%= android_feature_icon.feature_name %>_hdpi</h4>
+		  		<% else %>
+		  			<h4><%= android_feature_icon.feature_name %>_xhdpi</h4>
+		  		<% end %>
+		  	<% end %>
+	  			<p><%= android_feature_icon.icon_size %></p>
+	  	</div>
+	  	<div class="span3 list-controls">
+	  		<div class="current-actions-wrap">
+	  			<div class="current-actions">
+			  	<div class="btn-group">
+			  	<%= link_to raw('<i class="icon-edit"></i> Edit'), edit_user_android_feature_icon_path(@user, android_feature_icon), :remote => true, :class => 'btn btn-small' %>
+			  	<%= link_to raw('<i class="icon-trash"></i> Delete'), [@user, android_feature_icon], :confirm => 'Are you sure?', :method => :delete, :remote => true, :class => 'btn btn-small' %>
+			  	</div>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<div id="inner_<%= dom_id(android_feature_icon) %>" class="row-fluid listItemInner"></div>
+<% end %>

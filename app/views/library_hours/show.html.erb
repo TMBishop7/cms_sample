@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Day:</b>
+  <%= @library_hour.day %>
+</p>
+
+<p>
+  <b>Open time:</b>
+  <%= @library_hour.open_time %>
+</p>
+
+<p>
+  <b>Close time:</b>
+  <%= @library_hour.close_time %>
+</p>
+
+<p>
+  <b>Library location:</b>
+  <%= @library_hour.library_location_id %>
+</p>
+
+
+<%= link_to 'Back', library_location_path(@library_location) %>

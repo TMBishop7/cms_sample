@@ -1,0 +1,9 @@
+$('#inner_<%= dom_id(@emergency_phone) %>').html(
+	'<%= escape_javascript(render "form") %></div>' +
+	'<a class="kill" href="#">&times;</a>');
+
+$('.kill', $('#inner_<%= dom_id(@emergency_phone) %>')).click(function() {
+	$.when( setFalse() ).done(function(){
+		$('#inner_<%= dom_id(@emergency_phone) %>').empty();
+	});
+});

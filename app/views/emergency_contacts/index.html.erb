@@ -1,0 +1,39 @@
+<div class="box-model-header"><h1>Emergency</h1></div>          
+  <div class="box-model-content">
+    <div class="row-fluid">
+      <div class="span12">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <%= link_to raw('<h4>Emergency Contacts</h4>'), center_emergency_contacts_path %>
+          </li>
+          <li>
+            <%= link_to raw('<h4>Emergency Phones</h4>'), center_emergency_phones_path %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span12 guide">
+        <div class="count">
+          <h3>Contacts</h3>
+          <div id="count" class="feed-count"><%= @center.emergency_contacts.count %></div>
+        </div>
+        <%= render "shared/mini_guide" %>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="addnew">
+          <div id="emcForm">
+            <%= render 'form' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span12">
+        <ul id="emcList" class="showList"><%= render @emergency_contacts %></ul>
+      </div>
+    </div>
+  </div>
+</div>

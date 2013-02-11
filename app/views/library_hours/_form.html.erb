@@ -1,0 +1,37 @@
+<%= form_for([@center, @library_location, @library_hour], :html => { :class => "form-inline" }) do |f| %>
+  <% if @library_hour.errors.any? %>
+    <div class ="alert alert-error">
+      <b><%= pluralize(@library_hour.errors.count, "error") %> caught: </b>
+      <% @library_hour.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span3 pad">
+      <%= f.select :day, Date::DAYNAMES.each_with_index.collect { |day,i| [day,i] }, :type => :number_field %>
+    </div>
+    <div class="field inline-field span3 pad">
+      <%= f.time_select :open_time, {:minute_step => 5, :ampm => true, :prompt => {:hour => 'open', :minute => 'open'}}, :class => 'timelib' %>
+    </div>
+    <div class="field inline-field span3 pad">
+      <%= f.time_select :close_time, {:minute_step => 5, :ampm => true, :prompt => {:hour => 'close', :minute => 'close'}}, :class => 'timelib' %>
+    </div>
+    
+    <% if @library_hour.new_record? %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-success btn-large pull-right") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

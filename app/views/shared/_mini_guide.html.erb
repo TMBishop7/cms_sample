@@ -1,0 +1,139 @@
+<div class="mini-guide">
+    <h3>Quick Guide</h3>
+    <% if @act_control == 'newsfeeds' %>
+  	<div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Add a News feed by entering the URL’s of the RSS feeds that you would like to be included.</div>
+  	<div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Ensure feeds are standard compliant by validating with <a href="http://validator.w3.org/feed/">validator.w3.org/feed/</a></div>
+    <% elsif @act_control == 'photosfeeds' %>
+	<div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;For photos, we integrate with <a href="http://flickr.com" alt="">Flickr.com</a>, a free service powered by Yahoo!</div>
+	<div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;To add an album, enter a title and the 'Set Number' of the Flickr album URL.</div>
+    <% elsif @act_control == 'videosfeeds' %>
+	<div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;iCampus integrates with <a href="http://www.youtube.com">YouTube</a> for Videos. Multiple channels/feeds are encouraged.</div>
+	<div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;To add a feed, enter a title, and the YouTube account Username for the Channel.</div>
+    <% elsif @act_control == 'eventsfeeds' %>
+	<div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;We integrate with 'ical' (.ics) feeds for Events. Please <a href="http://icalvalid.cloudapp.net/" alt="">validate</a> the feed before submitting.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Enter a title, choose a color, and enter the URL for the feed before submitting.</div>
+    <% elsif @act_control == 'directories' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;For Directory, we support LDAP that is anonymous or secure* (SSL/TLS).</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Include LDAP Server, Port, and Schema. If secure, email the username/password to your project manager.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Minimum schema required: First Name, Last Name, Fullname, Unique ID.</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;<em>* We do not support LDAP behind your firewall.</em></div>
+    <% elsif @act_control == 'athletics' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;We support athletic websites created by CBS Sports, Sidearm, or Neulion.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Select your provider, and enter the URL of your athletics website.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;If your provider is not listed, please contact your designated project manager.</div>
+    <% elsif @act_control == 'library_worldcats' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;We have integrated with WorldCat for library catalog searching functionality.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Enter your WorldCat Search API Key and school code (3 to 4 digit number).</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;Before submitting, please make sure you are entering the <em>Search</em> API Key.</div>
+    <% elsif @act_control == 'places' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;This feature provides a campus map with search functionality.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;If an XML file is available, email it to your project manager and skip this step. Otherwise, continue below:</div><br/>
+    <div class="howto"><i class="icon-minus"></i> &nbsp;&nbsp;To add a new marker, double-click an empty area on map near desired location, then drag marker to exact location.</div>
+    <div class="howto"><i class="icon-minus"></i> &nbsp;&nbsp;In the sidepanel, enter a title and select marker type. Verify all information is correct, then click 'Submit'.</div>
+    <div class="howto"><i class="icon-minus"></i> &nbsp;&nbsp;To Edit/Delete, click a marker on the map. Click desired action in the box that appears in sidepanel.</div>
+    <div class="howto"><i class="icon-minus"></i> &nbsp;&nbsp;If you clicked 'Edit', drag the marker on the map to change coordinates inside the form. Make sure to click save!</div>
+    <% elsif @act_control == 'emergency_contacts' %>
+	<div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Emergency contacts can be called from your application. Please provide the following:</div>
+	<div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;The Name of the organization, it's 9-digit phone number, and it's website URL.</div>
+    <% elsif @act_control == 'emergency_phones' %>
+	<div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;This feature provides a map of emergency push-button phones on Campus.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;If an XML file is available, email it to your project manager and skip this step. Otherwise, continue below:</div><br/>
+    <div class="howto"><i class="icon-minus"></i> &nbsp;&nbsp;To add a new marker, double-click an empty area on map near desired location, then drag marker to exact location.</div>
+    <div class="howto"><i class="icon-minus"></i> &nbsp;&nbsp;Provide a title that describes the location (ex: 'Wilson Hall'). Verify all information is correct, then click 'Submit'.</div>
+    <div class="howto"> <i class="icon-minus"></i> &nbsp;&nbsp;To Edit/Delete, click a marker on the map. Click desired action in the box that appears in sidepanel.</div>
+    <div class="howto"><i class="icon-minus"></i> &nbsp;&nbsp;If you clicked 'Edit', drag the marker on the map to change coordinates inside the form. Make sure to click save!</div>
+    <% elsif (@act_control == 'library_locations') && (action_name == 'index') %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;This feature allows users to view library hours, contacts, and location.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Once a new Library has been created, click 'Update' to add/edit hours and contacts.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Ensure each library has hours for each day of the week, and at least one contact.</div>
+    <% elsif @act_control == 'library_locations' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Enter the name of the Library, and add a link URL to an image of the Library.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Drag marker to desired location (Lat/Long fields in form will populate automatically).</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Please verify correctness before submitting.</div>
+    <% elsif @act_control == 'library_contacts' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Enter the name or title of the library contact.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Enter the phone number and email address of the contact.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Verify correctness, then submit.</div>
+    <% elsif @act_control == 'library_hours' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;First, select the Weekday you wish to add hours for.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Then select the Open and Close times for this day</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;After verifying correctness, submit.</div>
+    <% elsif @act_control == 'ios_main_icons' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;For the iOS App's main icon, include the following image pixel sizes:</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;57x57, 106x106, 114x114, 212x212, 512x512</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;* All images must be <em>.png</em> format!</div>
+    <% elsif @act_control == 'ios_feature_icons' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;For <em>each</em> iOS feature icon, include the following image pixel sizes:</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;57x57, 114x114</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;* All images must be <em>.png</em> format!</div>
+    <% elsif @act_control == 'ios_backgrounds' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;For the iOS App's home background and splash screens, include the following image pixel sizes:</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Background: 320x416, 640x832</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Splash Screen: 320x480, 640x960</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;* All images must be <em>.png</em> format!</div>
+    <% elsif @act_control == 'ios_topbars' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Choose the Top Bar color of your iOS application. </div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Select or enter the RGB color (<em>ex: 25,117,221</em>) desired.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;A lighting gradient effect is automatically applied to the top bar.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;A similar lighting gradient is applied to the preview to help aid color selection.</div>
+    <% elsif @act_control == 'android_main_icons' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;For the Android App's main icon, include the following image pixel sizes:</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;48x48, 72x72, 96x96, 512x512</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;* All images must be <em>.png</em> format!</div>
+    <% elsif @act_control == 'android_feature_icons' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;For <em>each</em> Android feature icon, include the following image pixel sizes:</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;57x57, 86x86, 114x114</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;* All images must be <em>.png</em> format!</div>
+    <% elsif @act_control == 'android_backgrounds' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;For the Android App's home background and splash screens, include the following image pixel sizes:</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Background: 320x425 (mdpi), 480x637 (hdpi), 640x850 (xhdpi)</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Splash Screen: 320x470 (mdpi), 480x705 (hdpi), 640x940 (xhdpi)</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;* All images must be <em>.png</em> format!</div>
+    <% elsif @act_control == 'android_topbars' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Choose the Top Bar color of your Android application.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Select or enter (2) HEX colors (<em>ex: #0088cc</em>) desired.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;First HEX color starts at top of bar and blends to second HEX color at bottom.</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;* We recommend seeking a top-to-bottom (lighter-to-darker) gradient effect.</div>
+    <% elsif @act_control == 'mobile_web_feature_icons' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;For <em>each</em> Mobile Web feature icon, include the following image pixel sizes:</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;57x57, and 114x114</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;* All images must be <em>.png</em> format!</div>
+    <% elsif @act_control == 'mobile_web_topbars' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Choose the Top Bar color of your Mobile Web App. </div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Select or enter the RGB color (<em>ex: 25,117,221</em>) desired.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;A lighting gradient effect is automatically applied to the top bar.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;A similar lighting gradient is applied to the preview to help aid color selection.</div>
+    <% elsif @act_control == 'mobile_web_logos' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Please upload University Logos with a transparent background in the following image pixel sizes:</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;250x40, 500x80</div>
+    <div class="howto"><i class="icon-glass"></i> &nbsp;&nbsp;* All images must be <em>.png</em> format!</div>
+    <% elsif @act_control == 'apple_developers' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;iCampus submits all releases and updates of your iOS application</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Please provide us with the username and password to your Apple Developer account.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;If you prefer, you can provide it to your project manager via email/phone.</div>
+    <% elsif @act_control == 'android_profiles' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;iCampus submits all releases and updates of your Android application</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Please provide us with the username and password to your Android Marketplace account.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;If you prefer, you can provide it to your project manager via email/phone.</div>
+    <% elsif @act_control == 'testers' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;For iOS testing, we will send you builds for testing and review.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;To add a test device, first select the version of iOS running on the device.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Then, enter the email address of the recipient, and the device UDID.</div>
+    <% elsif @act_control == 'project_info_pages' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;The App's info page contains a link for users to learn more about your mobile initiatives.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Please create a project information/mobile initiatives page to link to.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Once this page has been created, enter the URL to the info page, and submit.</div>
+    <% elsif @act_control == 'support_emails' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;iCampus provides a mechanism for support on the info page, should users have any issues.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Please create a support email (<em>ex: mobile@school.edu</em>) that forwards to <em>support@ezaxess.com</em></div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Once created, enter the address to the support email alias below, then submit.</div>
+    <% elsif @act_control == 'cnames' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Create a 'CNAME' (<em>ex: m.school.edu</em>) (or a similar alternative) that points to <em>school.ezaxess.com</em></div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Please let us know in advance so we can ensure there is no disruption of service.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Once the CNAME has been created, enter the URL below, then submit.</div>
+    <% elsif @act_control == 'info_appstores' %>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Please provide the following information, which will be displayed in App Stores.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;Full Institution Name, Short Application Name (12-chars or less), Long Application Name.</div>
+    <div class="howto"><i class="icon-ok"></i> &nbsp;&nbsp;A Description of your school and the application features.</div>
+    <% end %>
+</div>

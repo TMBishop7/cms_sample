@@ -1,0 +1,65 @@
+<div class="row-fluid">
+    <div class="span12">
+      <ul class="nav nav-tabs home-tabs">
+        <li>
+          <%= link_to "Features", {:action => "tab_feat"}, :remote => true %>
+        </li>
+        <li>
+          <%= link_to "Graphics", {:action => "tab_graph"}, :remote => true %>
+        </li>
+        <li>
+          <%= link_to "Distribution", {:action => "tab_dist"}, :remote => true %>
+        </li>
+        <li class="active">
+          <%= link_to "Release", {:action => "tab_rel"}, :remote => true %>
+        </li>
+      </ul>
+    </div>
+</div>
+<div class="row-fluid chcklst">
+  <div class="span12 checklist">
+      <div class="row-fluid checklist-row checklist-row-header">
+        <div class="span12 checklist-header"><h4>All</h4></div>
+      </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+          <% if @user.project_info_page != nil %>
+            <span class="badge badge-info">&#x2713;</span>
+          <% else %>
+            <span class="badge">0</span>
+          <% end %>
+        </div>
+        <div class="span10"><h4>Project Info Page</h4></div>
+      </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+          <% if @user.support_email != nil %>
+            <span class="badge badge-info">&#x2713;</span>
+          <% else %>
+            <span class="badge">0</span>
+          <% end %>
+        </div>
+        <div class="span10"><h4>Support Email</h4></div>
+      </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+          <% if @user.cname != nil %>
+            <span class="badge badge-info">&#x2713;</span>
+          <% else %>
+            <span class="badge">0</span>
+          <% end %>
+        </div>
+        <div class="span10"><h4>CNAME</h4></div>
+      </div>
+      <div class="row-fluid checklist-row">
+        <div class="span2 checklist-status">
+          <% if @user.info_appstore != nil %>
+            <span class="badge badge-info">&#x2713;</span>
+          <% else %>
+            <span class="badge">0</span>
+          <% end %>
+        </div>
+        <div class="span10"><h4>AppStore Information</h4></div>
+      </div>      
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<%= form_for([@center, @emergency_contact], :remote => true, :html => { :class => "form-inline" }) do |f| %>
+  <% if @emergency_contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@emergency_contact.errors.count, "error") %> prohibited this emergency_contact from being saved:</h2>
+
+      <ul>
+      <% @emergency_contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span3 pad">
+      <%= f.text_field :name, :placeholder => "Name", :class => "fullw" %>
+    </div>
+    <div class="field inline-field span2 pad">
+      <%= f.text_field :phone, :placeholder => "Phone", :class => "fullw" %>
+    </div>
+    <div class="field inline-field span4 pad">
+      <%= f.text_field :link_url, :placeholder => "Link URL", :class => "fullw" %>
+    </div>
+    <% if @emergency_contact.new_record? %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span3 pad">
+      <%= button_tag(:type => 'submit', class: "btn btn-success") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,5 @@
+$.ajax({
+	success: function() {
+		$('#iosBackgroundList').html('<%= escape_javascript(render :partial => @ios_backgrounds) %>');
+	}
+});

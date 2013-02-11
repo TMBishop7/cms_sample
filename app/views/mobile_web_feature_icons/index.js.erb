@@ -1,0 +1,5 @@
+$.ajax({
+	success: function() {
+		$('#mobileWebFeatureList').html('<%= escape_javascript(render :partial => @mobile_web_feature_icons) %>');
+	}
+});

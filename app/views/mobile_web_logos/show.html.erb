@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Logo size:</b>
+  <%= @mobile_web_logo.logo_size %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @mobile_web_logo.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_mobile_web_logo_path(@mobile_web_logo) %> |
+<%= link_to 'Back', mobile_web_logos_path %>

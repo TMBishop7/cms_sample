@@ -1,0 +1,28 @@
+<div class="box-model-header"><h1>Android Main Icon</h1></div> 
+<div class="box-model-content">
+  <div class="row-fluid">
+    <div class="span12 guide">
+      <div class="count">
+        <h3>Sizes</h3>
+        <div id="count" class="feed-count"><%= @android_main_icons.count %></div>
+      </div>
+      <%= render "shared/mini_guide" %>
+    </div>
+  </div>
+  <div class="row-fluid">
+      <div class="span12">
+        <div class="addnew">
+          <div id="androidMainIcon_form">
+            <%= render 'form' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <ul id="androidMainList" class="thumbnails">
+        <%= render @android_main_icons %>
+      </ul>
+    </div>
+  </div>
+</div>

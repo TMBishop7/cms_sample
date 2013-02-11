@@ -1,0 +1,46 @@
+<%= form_for(@android_topbar, :url => user_android_topbar_path(@user), :html => { :class => "form-inline" }) do |f| %>
+  <% if @android_topbar.errors.any? %>
+    <div class ="alert alert-error">
+      <b><%= pluralize(@android_topbar.errors.count, "error") %> caught: </b>
+      <% @android_topbar.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span6 padbar">
+      <div id="android-topbar-container">
+        <div id="android-topbar-gradient"></div>
+      </div>
+    </div>
+    <div class="field inline-field span3 padbar">
+      <div class="row-fluid colorstack">
+        <div class="field inline-field">
+          <%= f.text_field :top_hex_color %>
+          <%= f.label "Top" %>
+        </div>
+      </div>
+      <div class="row-fluid colorstack">
+        <div class="field inline-field">
+          <%= f.text_field :bottom_hex_color %>
+          <%= f.label "Bottom" %>
+        </div>
+      </div>
+    </div>
+    <% if @android_topbar.new_record? %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-success btn-large pull-right") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<%= form_for(@mobile_web_topbar, :url => user_mobile_web_topbar_path(@user), :html => { :class => "form-inline" }) do |f| %>
+  <% if @mobile_web_topbar.errors.any? %>
+    <div class ="alert alert-error">
+      <b><%= pluralize(@mobile_web_topbar.errors.count, "error") %> caught: </b>
+      <% @mobile_web_topbar.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span6 padbar">
+      <div id="topbar-container" style="">
+        <div id="topbar-gradient"></div>
+      </div>
+    </div>
+    <div class="field inline-field span3 pad">
+        <%= f.text_field :rgb_color %>
+    </div>
+    <% if @mobile_web_topbar.new_record? %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-success btn-large pull-right") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

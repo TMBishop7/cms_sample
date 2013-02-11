@@ -1,0 +1,6 @@
+$('#feedsNews').prepend('<%= escape_javascript(render(@newsfeed)) %>');
+$('#feedsNews > li').first().effect('highlight', {color: '#e1e1ff'}, 1500);
+$('#newsfeed_form > form')[0].reset();
+var t = parseFloat($('#count').html());
+var c = t+1;
+$('#count').html(c);

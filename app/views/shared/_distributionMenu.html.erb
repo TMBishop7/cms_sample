@@ -1,0 +1,8 @@
+<ul class="nav nav-list">
+  <li class="nav-header">Distribution</li>
+  <li class="nav-header nav-header-sub">Accounts</li>
+  <li class="<%= (@act_control == "apple_developers") ? 'active': '' %>"><%= link_to raw('<i class="icon-cog icon-grey"></i> Apple Developer'), user_apple_developer_path(@user) %></li>
+  <li class="<%= (@act_control == "android_profiles") ? 'active': '' %>"><%= link_to raw('<i class="icon-shopping-cart icon-grey"></i> Android Marketplace'), user_android_profile_path(@user) %></li>
+  <li class="nav-header nav-header-sub">Testing</li>
+  <li class="<%= (@act_control == "testers") ? 'active': '' %>"><%= link_to raw('<i class="icon-user icon-grey"></i> Test Devices'), [@user, :testers] %></li>
+</ul>

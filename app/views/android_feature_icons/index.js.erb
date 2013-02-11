@@ -1,0 +1,5 @@
+$.ajax({
+	success: function() {
+		$('#androidFeatureList').html('<%= escape_javascript(render :partial => @android_feature_icons) %>');
+	}
+});

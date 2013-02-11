@@ -1,0 +1,27 @@
+<div class="box-model-header"><h1>News</h1></div>						
+	<div class="box-model-content">
+		<div class="row-fluid">
+			<div class="span12 guide">
+				<div class="count">
+					<h3>Feeds</h3>
+					<div id="count" class="feed-count"><%= @newsfeeds.count %></div>
+				</div>
+				<%= render "shared/mini_guide" %>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="addnew">
+					<div id="newsfeed_form">
+					  <%= render 'form' %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<ul id="feedsNews" class="showList" data-update-url="<%= sort_user_newsfeeds_url %>"><%= render @newsfeeds %></ul>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,37 @@
+<%= form_for([@center, @library_location, @library_contact], :html => { :class => "form-inline" }) do |f| %>
+  <% if @library_contact.errors.any? %>
+    <div class ="alert alert-error">
+      <b><%= pluralize(@library_contact.errors.count, "error") %> caught: </b>
+      <% @library_contact.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span3 pad">
+      <%= f.text_field :title, :placeholder => "Title", :class => 'fullw' %>
+    </div>
+    <div class="field inline-field span3 pad">
+      <%= f.text_field :phone, :placeholder => "Phone", :class => 'fullw' %>
+    </div>
+    <div class="field inline-field span3 pad">
+      <%= f.text_field :email, :placeholder => "E-Mail", :class => 'fullw' %>
+    </div>
+    <!-- f.hidden_field :library_location_id, :type => :number_field --> 
+    <% if @library_contact.new_record? %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-success btn-large pull-right") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

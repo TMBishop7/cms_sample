@@ -1,0 +1,20 @@
+<%= content_tag_for :li, photosfeed do %>
+	<div class="row-fluid">
+		<div class="span1"><div class="handle"></div></div>
+		<div class="span8 list-left">
+	  		<h4><%= photosfeed.album_title %></h4>
+	  		<p><%= photosfeed.set_number %></p>
+	  	</div>
+	  	<div class="span3 list-controls">
+	  		<div class="current-actions-wrap">
+	  			<div class="current-actions">
+			  		<div class="btn-group">
+			  		<%= link_to raw('<i class="icon-edit"></i> Edit'), edit_user_photosfeed_path(@user, photosfeed), :remote => true, :class => 'btn btn-small' %>
+			  		<%= link_to raw('<i class="icon-trash"></i> Delete'), [@user, photosfeed] , :confirm => 'Are you sure?', :method => :delete, :remote => true, :class => 'btn btn-small' %>
+			  		</div>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<div id="inner_<%= dom_id(photosfeed) %>" class="row-fluid listItemInner"></div>
+<% end %>

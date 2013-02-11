@@ -1,0 +1,29 @@
+<div class="login-container">
+	<div class="login-header">
+		<h2>Reset Password</h2>
+	</div>
+	<%= form_tag password_resets_path, :method => :post do %>
+		<div class="row-fluid">
+		   <div class="field">
+		   	  <%= label :name, "Username", :class => 'login-label' %>
+		      <%= text_field_tag :name, params[:name] %>
+		   </div>
+	  	</div>
+	  	<br />
+	  	<div class="row-fluid">
+		   <div class="field">
+		   	  <%= label_tag :email, "Account Email", :class => 'login-label' %>
+    		  <%= text_field_tag :email, params[:email] %>
+		   </div>
+		</div>
+	  	<br />
+	  	<div class="row-fluid">
+	  	   <div class="forgot">
+	  	   	  <%= link_to "Back to Login", login_path %>
+	  	   </div>
+		   <div class="actions">
+			  <%= submit_tag "Reset", :class => 'btn btn-warning pull-right' %>
+		   </div>
+	  	</div>
+	<% end %>
+</div>

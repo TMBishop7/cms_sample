@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @videosfeed.title %>
+</p>
+
+<p>
+  <b>Youtube username:</b>
+  <%= @videosfeed.youtube_username %>
+</p>
+
+
+<%= link_to 'Edit', edit_videosfeed_path(@videosfeed) %> |
+<%= link_to 'Back', videosfeeds_path %>

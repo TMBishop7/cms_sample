@@ -1,0 +1,26 @@
+<%= form_for([@center, @emergency_phone], :remote => true) do |f| %>
+  <% if @emergency_phone.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@emergency_phone.errors.count, "error") %> prohibited this Phone location from being saved:</h2>
+
+      <ul>
+      <% @emergency_phone.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :location_name, :placeholder => "Location Name", :class => 'span12' %>
+  </div>
+  <div class="field">
+    <%= f.text_field :latitude, :placeholder => "Latitude", :class => 'span12' %>
+  </div>
+  <div class="field">
+    <%= f.text_field :longitude, :placeholder => "Longitude", :class => 'span12' %>
+  </div>
+  <div class="actions">
+    <%= f.submit @emergency_phone.new_record? ? "Add" : "Save", @emergency_phone.new_record? ? { :class => 'btn btn-primary' } : { :class => 'btn btn-success' }  %>
+  </div>
+<% end %>

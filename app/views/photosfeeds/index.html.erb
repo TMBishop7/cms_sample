@@ -1,0 +1,28 @@
+<div class="box-model-header"><h1>Photos</h1></div>						
+	<div class="box-model-content">
+		<div class="row-fluid">
+			<div class="span12 guide">
+				<div class="count">
+					<h3>Albums</h3>
+					<div id="count" class="feed-count"><%= @photosfeeds.count %></div>
+				</div>
+				<%= render "shared/mini_guide" %>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="addnew">
+					<div id="photosfeed_form">
+					  <%= render 'form' %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<ul id="feedsPhotos" class="showList" data-update-url="<%= sort_user_photosfeeds_url %>"><%= render :partial => @photosfeeds %></ul>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,71 @@
+<body onload="initialize()">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <%= link_to raw('<div class="icampuslive-logo">Live</div>'), users_path %>
+          <div class="flash-top">
+            <% flash.each do |name, msg| %>
+              <div class ="alert alert-<%= name %>">
+                <%= msg %>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <%= render 'shared/navbar' %>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid laywrap">
+        <div class="span3 dashside">
+          <div class="well sidebar-nav">
+            <%= render 'shared/featuresMenu' %>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9 dashmain">
+          <div class="box-model">
+
+            <div class="box-model-header"><h1>Edit <%= @library_location.title %></h1></div>           
+              <div class="box-model-content">
+                <div class="row-fluid">
+                  <div class="span12 guide">
+                    <%= render "shared/mini_guide" %>
+                  </div>
+                </div>
+                <div class="row-fluid">
+                  <div class="span12">
+                  </div>
+                </div>
+                <div class="row-fluid">
+                  <div class="span4">
+                    <%= render 'form' %>
+                  </div>
+                  <div class="span8">
+                    <div id="map-wrapper">
+                      <div id="canvas-wrapper">               
+                        <div id="map_canvas"></div>
+                      </div>                                      
+                    </div>
+                  </div>
+                </div>
+                <div class="row-fluid new-lib">
+                  <div class="span12 pagination-centered">
+                    <%= link_to 'Back', center_library_location_path %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>       
+        </div><!--/span-->
+      </div><!--/row-->
+      <hr>
+
+      <footer>
+        <p>&copy; iCampus 2012</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+</body>        

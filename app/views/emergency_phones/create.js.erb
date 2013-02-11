@@ -1,0 +1,8 @@
+$.ajax({
+	success: function() {
+		$('#edit-box').append('<%= escape_javascript(render(@emergency_phone)) %>');
+		$('#new-emergency_phone-form > form')[0].reset();
+		$('#new-emergency_phone-form').toggle();
+		loadMaps();
+	}
+});

@@ -1,0 +1,33 @@
+<%= form_for(@athletic, :url => user_athletic_path(@user), :html => { :class => "form-inline" }) do |f| %>
+  <% if @athletic.errors.any? %>
+    <div class ="alert alert-error">
+      <b><%= pluralize(@athletic.errors.count, "error") %> caught: </b>
+      <% @athletic.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% end %>
+
+  <div class="row-fluid">
+    <div class="field inline-field span4 pad">
+      <%= f.select :provider_name, ATH_PROVIDERS %>
+    </div>
+    <div class="field inline-field span5 pad">
+      <%= f.text_field :url, :placeholder => "URL", :class => "fullw" %>
+    </div>
+    <% if @athletic.new_record? %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-primary btn-large pull-right") do %>
+       <i class="icon-plus-sign icon-white"></i> Submit
+      <% end %>
+     </div>
+    <% else %>
+     <div class="actions inline-field span3">
+      <%= button_tag(:type => 'submit', class: "btn btn-success btn-large pull-right") do %>
+       <i class="icon-ok-sign icon-white"></i> Save
+      <% end %>
+     </div>
+    <% end %>
+  </div>
+<% end %>

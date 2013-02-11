@@ -1,0 +1,29 @@
+<h1>Listing library_contacts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Library location</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @library_contacts.each do |library_contact| %>
+  <tr>
+    <td><%= library_contact.title %></td>
+    <td><%= library_contact.phone %></td>
+    <td><%= library_contact.email %></td>
+    <td><%= library_contact.library_location_id %></td>
+    <td><%= link_to 'Show', library_location_library_contact_path(@library_location, library_contact) %></td>
+    <td><%= link_to 'Edit', edit_library_location_library_contact_path(@library_location, library_contact) %></td>
+    <td><%= link_to 'Destroy', [@library_location, library_contact], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Library contact', new_library_location_library_contact_path(@library_location) %>

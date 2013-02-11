@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Feature name:</b>
+  <%= @android_feature_icon.feature_name %>
+</p>
+
+<p>
+  <b>Icon size:</b>
+  <%= @android_feature_icon.icon_size %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @android_feature_icon.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_android_feature_icon_path(@android_feature_icon) %> |
+<%= link_to 'Back', android_feature_icons_path %>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iCampus Live</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <style type="text/css">
+      body {
+        padding: 15px 10px 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+  </style>
+</head>
+<body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <%= link_to raw('<div class="icampuslive-logo">Live</div>'), users_path %>
+          <div class="flash-top">
+            <% flash.each do |name, msg| %>
+              <div class ="alert alert-<%= name %>">
+                <%= msg %>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+  	   <%= render 'shared/navbar' %>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid laywrap">
+
+        <div class="span3 dashside">
+          <div class="well sidebar-nav">
+            <% if get_controller == 1 %>
+              <%= render 'shared/featuresMenu' %>
+            <% elsif get_controller == 2 %>
+              <%= render 'shared/graphicsMenu' %>
+            <% elsif get_controller == 3 %>
+              <%= render 'shared/distributionMenu' %>
+            <% elsif get_controller == 4 %>
+              <%= render 'shared/releaseMenu' %>
+            <% end %>
+          </div><!--/.well -->
+        </div>
+        <div class="span9 dashmain">
+          <div class="box-model">          
+      	     <%= yield %>
+          </div>       
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <hr/>
+        <footer>
+          <p>&copy; iCampus 2012</p>
+        </footer>
+      </div>
+    </div><!--/.fluid-container-->
+    <% if ((@act_control == 'ios_main_icons') || (@act_control == 'ios_backgrounds') || (@act_control == 'android_main_icons') || (@act_control == 'android_backgrounds')) %>
+      <%= render 'layouts/modal' %>
+    <% end %>
+</body>
+</html>

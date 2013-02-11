@@ -1,0 +1,2 @@
+module MobileWebTopbarsHelper
+end

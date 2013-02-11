@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:lib_hours] = "%l:%M%P"

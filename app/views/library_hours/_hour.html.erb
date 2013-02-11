@@ -1,0 +1,19 @@
+<% @library_location.library_hours.order("day ASC").each do |library_hour| %>
+  <div class="row-fluid show-lib-hc">
+      <div class="span1"><div class="cms-icon icon-small cms-hours-small"></div></div>
+      <div class="span3 hc-left"><h4><%= Date::DAYNAMES[library_hour.day.to_i] %></h4></div>
+      <div class="span5 hc-middle">
+        <h4><%= library_hour.open_time.to_s(:lib_hours) %> &mdash; <%= library_hour.close_time.to_s(:lib_hours) %></h4>
+      </div>
+      <div class="span3 hc-controls">
+        <div class="current-actions-wrap">
+        <div class="current-actions">
+          <div class="btn-group">
+          <%= link_to 'Edit', edit_center_library_location_library_hour_path(@center, @library_location, library_hour), :class => 'btn btn-small' %>
+          <%= link_to 'Delete', [@center, @library_location, library_hour], :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small' %>
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+<% end %>
